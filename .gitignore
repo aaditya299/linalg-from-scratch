@@ -1,0 +1,5 @@
+.venv/
+build/
+*.o
+a.out
+__pycache__/

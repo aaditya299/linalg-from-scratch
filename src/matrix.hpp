@@ -9,6 +9,9 @@ class Matrix{
     std:: size_t cols() const;
     double& operator()(std::size_t i,std::size_t j);
     const double& operator()(std::size_t i, std::size_t j) const;
+    Matrix operator+(const Matrix& other) const;
+    Matrix operator*(const Matrix& other) const;
+    Matrix transpose() const;
     private:
     std::size_t rows_;
     std::size_t cols_;

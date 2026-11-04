@@ -37,7 +37,7 @@ Matrix Matrix::operator+(const Matrix& other) const{
 
 Matrix Matrix::operator*(const Matrix& other) const{
     if(cols_ != other.rows_)
-    throw std::invalid_argument("matrx sizes do not match for *");
+    throw std::invalid_argument("matrix sizes do not match for *");
     Matrix result(rows_,other.cols_);
     for(std::size_t i=0;i<rows_;++i)
         for(std::size_t j=0;j<other.cols_;++j){

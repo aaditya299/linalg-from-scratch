@@ -28,4 +28,13 @@ int main(){
     cout << "x:";
     for (double v : x) cout << " " << v;
     cout << "\n";
+    cout << "det: " << determinant(A) << "\n";
+    Matrix inv = inverse(A);
+    cout << "inverse:\n" << inv;
+    cout << "A * inverse:\n" << A * inv;
+
+    Matrix S(2, 2);
+    S(0, 0) = 1; S(0, 1) = 2;
+    S(1, 0) = 2; S(1, 1) = 4;
+    cout << "det singular: " << determinant(S) << "\n";
 }

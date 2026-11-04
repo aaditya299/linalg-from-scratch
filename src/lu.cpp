@@ -34,6 +34,7 @@ LU lu_decompose(const Matrix& A){
     }
     return LU{L,U,perm,sign};
 }
+
 vector<double> lu_solve(const LU& f, const vector<double>& b){
     const size_t n=f.L.rows();
     if(b.size()!=n)
@@ -51,4 +52,28 @@ vector<double> lu_solve(const LU& f, const vector<double>& b){
         x[i]=s/f.U(i,i);
     }
     return x;
+}
+
+double determinant(const Matrix& A){
+    try{
+        LU f=lu_decompose(A);
+        double d=f.sign;
+        for(size_t i=0;i<f.U.rows();i++) d*=f.U(i,i);
+        return d;
+    } catch (const runtime_error&){
+        return 0.0;
+    }
+}
+
+Matrix inverse(const Matrix& A){
+    LU f=lu_decompose(A);
+    const size_t n=A.rows();
+    Matrix inv(n,n);
+    for(size_t j=0;j<n;j++){
+        vector<double> e(n,0.0);
+        e[j]=1.0;
+        vector<double>col=lu_solve(f,e);
+        for(size_t i=0;i<n;i++) inv(i,j)= col[i];
+    }
+    return inv;
 }

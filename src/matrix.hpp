@@ -12,6 +12,7 @@ class Matrix{
     Matrix operator+(const Matrix& other) const;
     Matrix operator*(const Matrix& other) const;
     Matrix transpose() const;
+    static Matrix identity(std::size_t n);
     private:
     std::size_t rows_;
     std::size_t cols_;

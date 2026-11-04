@@ -56,3 +56,9 @@ Matrix Matrix::transpose() const{
             result.data_[j*rows_+i]=data_[i*cols_+j];
     return result;
 }
+
+Matrix Matrix::identity(std::size_t n){
+    Matrix result(n,n);
+    for(std::size_t i=0;i<n;++i) result(i,i)=1.0;
+    return result;
+}

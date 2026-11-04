@@ -17,4 +17,6 @@ int main(){
         std::cout << "A transposed:\n" << A.transpose();
     std::cout << "(A*B)^T:\n" << (A * B).transpose();
     std::cout << "B^T * A^T:\n" << B.transpose() * A.transpose();
+    std::cout << "I:\n" << Matrix::identity(3);
+    std::cout << "A * I:\n" << A * Matrix::identity(3);
 }

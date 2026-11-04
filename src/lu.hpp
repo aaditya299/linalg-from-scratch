@@ -10,3 +10,4 @@ struct LU {
     int sign;
 };
 LU lu_decompose(const Matrix& A);
+std::vector<double> lu_solve(const LU& f, const std::vector<double>& b);

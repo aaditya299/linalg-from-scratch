@@ -23,4 +23,9 @@ int main(){
         for(size_t j=0;j<3;j++)
             err=max(err,fabs(PA(i,j)-prod(i,j)));
     cout<<"max error: "<<err<<"\n";
+    vector<double> b = {7, 19, 49};
+    vector<double> x = lu_solve(f, b);
+    cout << "x:";
+    for (double v : x) cout << " " << v;
+    cout << "\n";
 }

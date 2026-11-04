@@ -34,3 +34,21 @@ LU lu_decompose(const Matrix& A){
     }
     return LU{L,U,perm,sign};
 }
+vector<double> lu_solve(const LU& f, const vector<double>& b){
+    const size_t n=f.L.rows();
+    if(b.size()!=n)
+        throw invalid_argument("b has the wrong length");
+    vector<double> y(n);
+    for(size_t i=0;i<n;i++){
+        double s=b[f.perm[i]];
+        for(size_t j=0;j<i;j++) s-=f.L(i,j)*y[j];
+        y[i]=s;
+    }
+    vector<double> x(n);
+    for(size_t  i=n;i-- >0;){
+        double s=y[i];
+        for(size_t j=i+1;j<n;j++) s-=f.U(i,j)*x[j];
+        x[i]=s/f.U(i,i);
+    }
+    return x;
+}
